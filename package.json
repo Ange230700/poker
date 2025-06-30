@@ -10,7 +10,7 @@
     "commit": "git-cz",
     "commitlint": "commitlint --edit",
     "prepare": "husky",
-    "start": "tsx src/main.ts",
+    "start": "tsx src/App.ts",
     "test": "vitest"
   },
   "lint-staged": {
