@@ -1,0 +1,49 @@
+%% docs\class-diagram.mmd
+
+classDiagram
+    class App {
+        +main(): void
+    }
+
+    class TexasHoldem {
+        -deck: Deck
+        +constructor()
+        +dealToPlayer(cardsCount: number): Card[]
+        +dealCommunityCards(): Card[]
+        +playRound(): number
+        +static showdown(holeCards: Card[], communityCards: Card[]): string
+        -static getCardValue(rank: string): number
+        -evaluateHand(holeCards: Card[], communityCards: Card[]): number[]
+        -compareHands(hand1: number[], hand2: number[]): number
+        -static getRankCounts(cards: Card[]): Map<string, number>
+        -static getSuitCounts(cards: Card[]): Map<string, number>
+        -static hasFourOfAKind(counts: number[]): boolean
+        -static hasFullHouse(counts: number[]): boolean
+        -static hasFlush(suitCounts: Map<string, number>): boolean
+        -static hasStraight(valueSet: Set<number>): boolean
+        -static hasThreeOfAKind(counts: number[]): boolean
+        -static hasTwoPairs(counts: number[]): boolean
+        -static hasPair(counts: number[]): boolean
+    }
+
+    class Deck {
+        -cards: Card[]
+        +constructor()
+        +shuffle(): void
+        +deal(number: number): Card[]
+        +burn(number: number): void
+        +getCards(): Card[]
+    }
+
+    class Card {
+        +rank: string
+        +suit: string
+        +constructor(rank: string, suit: string)
+        +toString(): string
+    }
+
+    App ..> TexasHoldem : uses
+    TexasHoldem --> Deck : owns
+    Deck --> Card : contains
+    TexasHoldem --> Card : uses
+

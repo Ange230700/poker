@@ -1,0 +1,15 @@
+%% docs\flowchart.mmd
+
+flowchart TD
+    A[Start] --> B[Set winner = 0]
+    B --> C{winner == 0?}
+    C -- Yes --> D[Create new TexasHoldem game]
+    D --> E[Deal 2 cards to each player]
+    E --> F[Deal 5 community cards]
+    F --> G[Evaluate player 1's hand]
+    G --> H[Evaluate player 2's hand]
+    H --> I[Compare hands]
+    I --> J{Who wins?}
+    J -- Tie --> C
+    J -- Player 1 --> K[Log "Player 1 wins" and finish]
+    J -- Player 2 --> L[Log "Player 2 wins" and finish]
